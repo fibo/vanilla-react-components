@@ -8,7 +8,7 @@ class AddTodo extends Component {
 
     var button = element.querySelector('button')
 
-    button.onclick = function () {
+    function addTodo () {
       if (input.value) {
         dispatch({
           type: 'ADD_TODO',
@@ -18,6 +18,14 @@ class AddTodo extends Component {
         input.value = ''
       } else {
         input.focus()
+      }
+    }
+
+    button.onclick = addTodo
+
+    input.onkeydown = function (event) {
+      if (event.keyCode === 13) {
+        addTodo()
       }
     }
   }
