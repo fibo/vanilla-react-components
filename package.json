@@ -1,0 +1,32 @@
+{
+  "name": "vanilla-react-components",
+  "version": "0.0.0",
+  "private": true,
+  "description": "is the classic Todo example implemented with vanilla React/Redux",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify -e src/index.js -o bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fibo/vanilla-react-components.git"
+  },
+  "keywords": [
+    "vanilla",
+    "react",
+    "redux"
+  ],
+  "author": {
+    "name": "Gianluca Casati",
+    "url": "http://g14n.info"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fibo/vanilla-react-components/issues"
+  },
+  "homepage": "https://github.com/fibo/vanilla-react-components#readme",
+  "devDependencies": {
+    "budo": "^9.4.7"
+  }
+}
