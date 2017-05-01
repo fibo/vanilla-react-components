@@ -19,7 +19,7 @@ function app (initialState) {
       render(currentState)
     }
 
-    var root = new Root(document, dispatch) // or use any other DOM element
+    var root = new Root(document.body, dispatch) // or use any other DOM element
 
     render = root.render.bind(root)
     render(currentState)
