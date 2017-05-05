@@ -5,7 +5,7 @@
   "description": "is the classic Todo example implemented with vanilla React/Redux",
   "main": "index.js",
   "scripts": {
-    "build": "browserify -e src/index.js -o bundle.js",
+    "build": "NODE_ENV=production browserify -e src/index.js -t envify | uglify-js > bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +27,8 @@
   },
   "homepage": "https://github.com/fibo/vanilla-react-components#readme",
   "devDependencies": {
-    "budo": "^9.4.7"
+    "budo": "^9.4.7",
+    "envify": "^4.0.0",
+    "uglifyjs": "^2.4.10"
   }
 }

@@ -15,14 +15,23 @@ function app (initialState) {
     var render = Function.prototype
 
     function dispatch (action) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.time(action.type)
+      }
+
       currentState = reducer(currentState, action)
       render(currentState)
+
+      if (process.env.NODE_ENV !== 'production') {
+        console.timeEnd(action.type)
+      }
     }
 
     var root = new Root(document.body, dispatch) // or use any other DOM element
 
     render = root.render.bind(root)
-    render(currentState)
+
+    dispatch({ type: 'INIT' })
   }
 }
 
