@@ -6,11 +6,11 @@ class Component {
     this.component = {}
   }
 
-  render (state) {
+  render (state, dispatch) {
     var component = this.component
 
     Object.keys(component).forEach(function (key) {
-      component[key].render(state)
+      component[key].render(state, dispatch)
     })
   }
 }
