@@ -1,5 +1,5 @@
 function reducer (currenState, action) {
-  var state = Object.assign(currenState)
+  var state = Object.assign({}, currenState)
 
   switch (action.type) {
     case 'ADD_TODO':
