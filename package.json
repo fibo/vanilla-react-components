@@ -1,6 +1,6 @@
 {
   "name": "vanilla-react-components",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "is the classic Todo example implemented with vanilla React/Redux",
   "main": "src/index.js",
