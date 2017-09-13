@@ -4,12 +4,12 @@ var AddTodo = require('./AddTodo')
 var TodoList = require('./TodoList')
 
 class Root extends Component {
-  constructor (element, dispatch) {
-    super(element, dispatch)
+  constructor (dispatch, element) {
+    super(dispatch, element)
 
-    this.component.TodoList = new TodoList(element.querySelector('ul.todo-list'), dispatch)
+    this.component.TodoList = new TodoList(dispatch, document.querySelector('ul.todo-list'))
 
-    this.component.AddTodo = new AddTodo(element.querySelector('.add-todo'), dispatch)
+    this.component.AddTodo = new AddTodo(dispatch, document.querySelector('.add-todo'))
   }
 }
 

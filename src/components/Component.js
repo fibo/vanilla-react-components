@@ -1,16 +1,16 @@
 class Component {
-  constructor (element, dispatch) {
-    this.element = element
+  constructor (dispatch, element) {
     this.dispatch = dispatch
+    this.element = element
 
     this.component = {}
   }
 
-  render (state, dispatch) {
+  render (state) {
     var component = this.component
 
     Object.keys(component).forEach(function (key) {
-      component[key].render(state, dispatch)
+      component[key].render(state)
     })
   }
 }

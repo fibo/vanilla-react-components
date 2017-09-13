@@ -2,9 +2,10 @@ var Component = require('./Component')
 var Todo = require('./Todo')
 
 class TodoList extends Component {
-  constructor (element, dispatch) {
-    super(element, dispatch)
+  constructor (dispatch, element) {
+    super(dispatch, element)
 
+    // Initialize child components as an empty list of todos.
     this.component = []
   }
 
@@ -19,7 +20,7 @@ class TodoList extends Component {
 
         this.element.appendChild(element)
 
-        var todo = new Todo(element, dispatch, index)
+        var todo = new Todo(dispatch, element, index)
         this.component.push(todo)
         todo.render(state)
       }

@@ -1,32 +1,36 @@
 var Component = require('./Component')
 
 class AddTodo extends Component {
-  constructor (element, dispatch) {
-    super(element)
-
-    var input = element.querySelector('input')
+  constructor (dispatch, element) {
+    super(dispatch, element)
 
     var button = element.querySelector('button')
+    button.onclick = this.addTodo.bind(this)
 
-    function addTodo () {
-      if (input.value) {
-        dispatch({
-          type: 'ADD_TODO',
-          what: input.value
-        })
+    var input = element.querySelector('input')
+    input.onkeydown = this.onkeydownInput.bind(this)
+    this.input = input
+  }
 
-        input.value = ''
-      } else {
-        input.focus()
-      }
+  addTodo () {
+    var dispatch = this.dispatch
+    var input = this.input
+
+    if (input.value) {
+      dispatch({
+        type: 'ADD_TODO',
+        what: input.value
+      })
+
+      input.value = ''
+    } else {
+      input.focus()
     }
+  }
 
-    button.onclick = addTodo
-
-    input.onkeydown = function (event) {
-      if (event.keyCode === 13) {
-        addTodo()
-      }
+  onkeydownInput (event) {
+    if (event.keyCode === 13) {
+      this.addTodo()
     }
   }
 }

@@ -1,8 +1,8 @@
 var Component = require('./Component')
 
 class Todo extends Component {
-  constructor (element, dispatch, index) {
-    super(element, dispatch)
+  constructor (dispatch, element, index) {
+    super(dispatch, element)
 
     this.index = index
 

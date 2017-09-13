@@ -37,7 +37,8 @@ function app (initialState) {
       }
     }
 
-    var root = new Root(document.body, dispatch) // or use any other DOM element
+    // Base element can be any DOM element or even null.
+    var root = new Root(dispatch, document.body)
 
     render = root.render.bind(root)
 
