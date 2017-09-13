@@ -27,8 +27,8 @@ function app (initialState) {
 
       currentState = reducer(currentState, action)
 
-      // Invoke render function passing state and only one prop: dispatch.
-      render(currentState, dispatch)
+      // Invoke render function passing state.
+      render(currentState)
 
       // Log actions in development.
       if (process.env.NODE_ENV !== 'production') {
