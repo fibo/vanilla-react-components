@@ -1,5 +1,9 @@
-var app = require('./app')
+import app from './app'
 
-var initialState = { todos: [{what: 'remember the milk'}] }
+const initialState = {
+  todos: [
+    { text: 'remember the milk' }
+  ]
+}
 
 window.addEventListener('load', app(initialState))

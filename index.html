@@ -10,6 +10,27 @@
       padding: 0;
     }
 
+    body {
+      font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #4d4d4d;
+    }
+
+    aside {
+      padding: 5px;
+    }
+
+    aside h2 {
+      color: rgba(175, 47, 47, 0.51);
+    }
+
+    dt {
+      margin-top: 1rem;
+    }
+
+    dd {
+      margin-left: 1rem;
+    }
+
     ul.todo-list li {
       text-decoration: none;
     }
@@ -20,19 +41,30 @@
   </style>
 </head>
 <body>
-  <h2>Vanilla (React/Redux)-like Todo example</h2>
-  <p>
-    No JSX, just HTML or DOM manipulation.
-    No CSS-in-JS, just plain CSS.
-    Component classes, with render method: signatures change a little bit.
-    Similar to Redux structure: dispatch, reducer, one state.
-  </p>
-  <ul class="todo-list">
-  </ul>
-  <div class="add-todo">
-    <button>+</button>
-    <input type="text"></input>
-  <div>
+  <aside>
+    <h2>Vanilla (React/Redux)-like Todo example</h2>
+
+    <p>
+      <dl>
+        <dt>No JSX</dt> <dd>just HTML or DOM manipulation</dd>
+        <dt>No CSS-in-JS</dt> <dd>only good old plain CSS or Sass if you prefer</dd>
+        <dt>Component classes</dt> <dd>there is a render method but the only life cycle hook is the constructor</dd>
+        <dt>Similar to Redux structure</dt> <dd>dispatch actions, reducer, one state</dd>
+      </dl>
+    </p>
+  </aside>
+
+  <div id="todoapp">
+    <h1>Todos</h1>
+
+    <ul class="todo-list"></ul>
+
+    <div class="add-todo">
+      <button>+</button>
+      <input type="text"></input>
+    </div>
+  </div>
+
   <script src="bundle.js"></script>
 </body>
 </html>

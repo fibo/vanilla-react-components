@@ -1,6 +1,8 @@
-var Root = require('./components/Root')
-var getInitialState = require('./getInitialState')
-var reducer = require('./reducer')
+import { applyMiddleware, compose, createStore } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+
+import Root from './components/Root'
+import reducer from './reducer'
 
 /**
  * App loader.
@@ -8,42 +10,25 @@ var reducer = require('./reducer')
  * window.addEventListener('load', app(state))
  */
 
-function app (initialState) {
-  return function () {
-    var currentState = initialState || getInitialState()
+export default function app (initialState) {
+  return function initApp () {
+    const store = createStore(
+      reducer,
+      initialState,
+      compose(
+        applyMiddleware(thunkMiddleware),
+        window.devToolsExtension ? window.devToolsExtension() : (f) => f
+      )
+    )
 
-    var render = Function.prototype
+    const root = new Root(store.dispatch)
 
-    function dispatch (action) {
-      // Behaves like redux-thunk middleware.
-      if (typeof action === 'function') {
-        return action(dispatch, currentState)
-      }
+    function listener () {
+      const state = store.getState()
 
-      // Measure actions in development.
-      if (process.env.NODE_ENV !== 'production') {
-        console.time(action.type)
-      }
-
-      currentState = reducer(currentState, action)
-
-      // Invoke render function passing state.
-      render(currentState)
-
-      // Log actions in development.
-      if (process.env.NODE_ENV !== 'production') {
-        console.log(action)
-        console.timeEnd(action.type)
-      }
+      root.render(state)
     }
 
-    // Base element can be any DOM element or even null.
-    var root = new Root(dispatch, document.body)
-
-    render = root.render.bind(root)
-
-    dispatch({ type: 'INIT' })
+    store.subscribe(listener)
   }
 }
-
-module.exports = app

@@ -1,25 +1,26 @@
-var Component = require('./Component')
+import Component from './Component'
 
-class AddTodo extends Component {
+export default class AddTodo extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
 
-    var button = element.querySelector('button')
-    button.onclick = this.addTodo.bind(this)
+    const button = element.querySelector('button')
+    button.addEventListener('click', this.addTodo.bind(this))
 
-    var input = element.querySelector('input')
-    input.onkeydown = this.onkeydownInput.bind(this)
-    this.input = input
+    const input = this.input = element.querySelector('input')
+    input.addEventListener('keydown', this.onkeydownInput.bind(this))
   }
 
   addTodo () {
-    var dispatch = this.dispatch
-    var input = this.input
+    const {
+      dispatch,
+      input
+    } = this
 
     if (input.value) {
       dispatch({
         type: 'ADD_TODO',
-        what: input.value
+        text: input.value
       })
 
       input.value = ''
@@ -34,5 +35,3 @@ class AddTodo extends Component {
     }
   }
 }
-
-module.exports = AddTodo

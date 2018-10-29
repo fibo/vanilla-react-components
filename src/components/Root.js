@@ -1,9 +1,9 @@
-var Component = require('./Component')
+import Component from './Component'
 
-var AddTodo = require('./AddTodo')
-var TodoList = require('./TodoList')
+import AddTodo from './AddTodo'
+import TodoList from './TodoList'
 
-class Root extends Component {
+export default class Root extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
 
@@ -12,5 +12,3 @@ class Root extends Component {
     this.component.AddTodo = new AddTodo(dispatch, document.querySelector('.add-todo'))
   }
 }
-
-module.exports = Root
