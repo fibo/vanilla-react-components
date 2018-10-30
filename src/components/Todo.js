@@ -1,4 +1,5 @@
 import Component from './Component'
+import DeleteTodoButton from './DeleteTodoButton'
 
 export default class Todo extends Component {
   constructor (dispatch, element, index) {
@@ -6,38 +7,44 @@ export default class Todo extends Component {
 
     this.index = index
 
+    this.component.deleteButton = new DeleteTodoButton(dispatch, this.createElement('button'), index)
+
+    this.content = this.createElement('span')
+
     element.addEventListener('click', this.toggle.bind(this))
   }
 
   render (state) {
-    var element = this.element
-    var index = this.index
+    const {
+      element,
+      index
+    } = this
 
-    var todo = state.todos[index]
+    const {
+      completed,
+      text
+    } = state.todos[index]
 
-    var completed = todo.completed
-    var text = todo.text
-
-    if (element.childNodes.length === 0) {
-      element.appendChild(document.createTextNode(text))
+    if (text !== this.text) {
+      this.content.innerHTML = text
+      this.text = text
     }
 
-    if (element.classList.contains('completed')) {
-      if (!completed) element.classList.remove('completed')
-    } else {
-      if (completed) element.classList.add('completed')
+    if (completed !== this.completed) {
+      if (completed) {
+        element.classList.add('completed')
+      } else {
+        element.classList.remove('completed')
+      }
+
+      this.completed = completed
     }
   }
 
   toggle () {
-    const {
-      dispatch,
-      index
-    } = this
-
-    dispatch({
+    this.dispatch({
       type: 'TOGGLE_TODO',
-      index
+      index: this.index
     })
   }
 }

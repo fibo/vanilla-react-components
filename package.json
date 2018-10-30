@@ -8,6 +8,7 @@
     "build": "browserify ${npm_package_main} -g [ envify --NODE_ENV production ] -g uglifyify -t babelify | uglifyjs --compress --mangle > bundle.js",
     "lint": "standa",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
+    "sass": "node-sass src/style.scss --output-style compressed --output .",
     "start": "budo ${npm_package_main} --dir . --serve bundle.js --open --live -- -t babelify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -39,6 +40,7 @@
     "budo": "^11.5.0",
     "dot-editorconfig": "^1.1.1",
     "envify": "^4.1.0",
+    "node-sass": "^4.9.4",
     "redux": "^4.0.1",
     "standa": "^12.0.0",
     "uglify-js": "^3.4.9",

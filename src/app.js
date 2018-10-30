@@ -1,5 +1,4 @@
 import { applyMiddleware, compose, createStore } from 'redux'
-import thunkMiddleware from 'redux-thunk'
 
 import Root from './components/Root'
 import reducer from './reducer'
@@ -16,7 +15,6 @@ export default function app (initialState) {
       reducer,
       initialState,
       compose(
-        applyMiddleware(thunkMiddleware),
         window.devToolsExtension ? window.devToolsExtension() : (f) => f
       )
     )

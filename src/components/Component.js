@@ -4,6 +4,11 @@ export default class Component {
     this.element = element
 
     this.component = {}
+
+    // Every JS component class has its homonym CSS class counterpart.
+    if (element) {
+      element.classList.add(this.constructor.name)
+    }
   }
 
   createElement (qualifiedName) {

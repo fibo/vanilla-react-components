@@ -1,70 +1,40 @@
 <!DOCTYPE>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
+    <title>Tasks</title>
 
-    body {
-      font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: #4d4d4d;
-    }
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    aside {
-      padding: 5px;
-    }
+      body {
+        font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #4d4d4d;
+      }
 
-    aside h2 {
-      color: rgba(175, 47, 47, 0.51);
-    }
+      h1 {
+        color: rgba(175, 47, 47, 0.51);
+      }
+    </style>
 
-    dt {
-      margin-top: 1rem;
-    }
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Tasks</h1>
 
-    dd {
-      margin-left: 1rem;
-    }
+    <ul class="TodoList"></ul>
 
-    ul.todo-list li {
-      text-decoration: none;
-    }
-
-    ul.todo-list li.completed {
-      text-decoration: line-through;
-    }
-  </style>
-</head>
-<body>
-  <aside>
-    <h2>Vanilla (React/Redux)-like Todo example</h2>
-
-    <p>
-      <dl>
-        <dt>No JSX</dt> <dd>just HTML or DOM manipulation</dd>
-        <dt>No CSS-in-JS</dt> <dd>only good old plain CSS or Sass if you prefer</dd>
-        <dt>Component classes</dt> <dd>there is a render method but the only life cycle hook is the constructor</dd>
-        <dt>Similar to Redux structure</dt> <dd>dispatch actions, reducer, one state</dd>
-      </dl>
-    </p>
-  </aside>
-
-  <div id="todoapp">
-    <h1>Todos</h1>
-
-    <ul class="todo-list"></ul>
-
-    <div class="add-todo">
+    <div class="AddTodo">
       <button>+</button>
       <input type="text"></input>
     </div>
-  </div>
 
-  <script src="bundle.js"></script>
-</body>
+    <script src="bundle.js"></script>
+  </body>
 </html>

@@ -1,0 +1,7 @@
+.Todo {
+  text-decoration: none;
+
+  &.completed > span {
+    text-decoration: line-through;
+  }
+}
