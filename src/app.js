@@ -1,5 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 
+import { saveState } from './localStorage'
 import Root from './components/Root'
 import reducer from './reducer'
 
@@ -28,5 +29,13 @@ export default function app (initialState) {
     }
 
     store.subscribe(listener)
+
+    // Persist state in localStorage.
+    store.subscribe(() => {
+      saveState(store.getState())
+    })
+
+    // First rendering.
+    root.render(store.getState())
   }
 }

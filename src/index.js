@@ -1,9 +1,17 @@
 import app from './app'
 
-const initialState = {
-  todos: [
-    { text: 'remember the milk' }
-  ]
-}
+import { loadState } from './localStorage'
 
-window.addEventListener('load', app(initialState))
+// let initialState
+
+// try {
+//   const state = loadState()
+//   console.log(state)
+//   const persistedState = JSON.parse(window.localStorage.getItem('tasks:state'))
+
+//   initialState = persistedState
+// } catch (ignore) {
+//   initialState = { todos: [] }
+// }
+
+window.addEventListener('load', app(loadState()))

@@ -1,1 +1,1 @@
-.Todo{text-decoration:none}.Todo.completed>span{text-decoration:line-through}
+.DeleteTodoButton{width:2rem;height:2rem}.Todo{text-decoration:none}.Todo.completed>span{text-decoration:line-through}
