@@ -1,5 +1,6 @@
 import Component from './Component'
-import DeleteTodoButton from './DeleteTodoButton'
+import DeleteTodo from './DeleteTodo'
+import ToggleTodo from './ToggleTodo'
 
 export default class Todo extends Component {
   constructor (dispatch, element, index) {
@@ -8,16 +9,13 @@ export default class Todo extends Component {
     this.index = index
 
     const view = this.createElement('div')
+    view.classList.add('view')
 
-    const toggle = this.createElement('input', view)
-    todo.classList.add('toggle')
-    todo.checked = true
+    this.component.toggle = new ToggleTodo(dispatch, this.createElement('input', view), index)
 
     this.content = this.createElement('label', view)
 
-    this.component.deleteButton = new DeleteTodoButton(dispatch, this.createElement('button', view), index)
-
-    element.addEventListener('click', this.toggle.bind(this))
+    this.component.deleteButton = new DeleteTodo(dispatch, this.createElement('button', view), index)
   }
 
   render (state) {
@@ -36,7 +34,6 @@ export default class Todo extends Component {
       this.text = text
     }
 
-    /*
     if (completed !== this.completed) {
       if (completed) {
         element.classList.add('completed')
@@ -46,13 +43,5 @@ export default class Todo extends Component {
 
       this.completed = completed
     }
-    */
-  }
-
-  toggle () {
-    this.dispatch({
-      type: 'TOGGLE_TODO',
-      index: this.index
-    })
   }
 }

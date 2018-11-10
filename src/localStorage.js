@@ -1,4 +1,5 @@
 const defaultState = {
+  filter: null,
   todos: []
 }
 

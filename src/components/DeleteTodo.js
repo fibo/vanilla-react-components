@@ -1,6 +1,6 @@
 import Component from './Component'
 
-export default class DeleteTodoButton extends Component {
+export default class DeleteTodo extends Component {
   constructor (dispatch, element, index) {
     super(dispatch, element)
 

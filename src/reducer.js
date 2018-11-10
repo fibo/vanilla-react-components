@@ -10,6 +10,19 @@ export default function reducer (currenState, action) {
 
       break
 
+    case 'DELETE_TODO':
+      state.todos = state.todos.splice(action.index, 1)
+
+      break
+
+    case 'TOGGLE_ALL':
+      for (let index in state.todos) {
+        console.log(index, action.completed)
+        state.todos[index].completed = action.completed
+      }
+
+      break
+
     case 'TOGGLE_TODO':
       state.todos[action.index].completed = !state.todos[action.index].completed
 
