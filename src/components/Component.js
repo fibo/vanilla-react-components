@@ -18,7 +18,15 @@ export default class Component {
     return newElement
   }
 
+  destroy () {
+    this.element.remove()
+  }
+
   render (state) {
+    this.renderComponents(state)
+  }
+
+  renderComponents (state) {
     const { component } = this
 
     Object.keys(component).forEach(function (key) {

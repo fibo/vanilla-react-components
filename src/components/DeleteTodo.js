@@ -1,10 +1,10 @@
 import Component from './Component'
 
 export default class DeleteTodo extends Component {
-  constructor (dispatch, element, index) {
+  constructor (dispatch, element, todoId) {
     super(dispatch, element)
 
-    this.index = index
+    this.todoId = todoId
 
     element.addEventListener('click', this.onClick.bind(this))
     element.classList.add('destroy')
@@ -13,7 +13,7 @@ export default class DeleteTodo extends Component {
   onClick (event) {
     this.dispatch({
       type: 'DELETE_TODO',
-      index: this.index
+      id: this.todoId
     })
   }
 }

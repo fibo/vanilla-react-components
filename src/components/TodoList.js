@@ -2,50 +2,41 @@ import Component from './Component'
 import Todo from './Todo'
 
 export default class TodoList extends Component {
-  constructor (dispatch, element) {
-    super(dispatch, element)
+  createTodo (id) {
+    const todo = new Todo(this.dispatch, this.createElement('li'), id)
 
-    // Initialize child components as an empty list of todos.
-    this.component = []
-
-    Object.defineProperties(this, {
-      numTodos: {
-        get: () => this.component.length
-      }
-    })
-  }
-
-  popTodo () {
-    const todo = this.component.pop()
-
-    todo.element.remove()
-  }
-
-  pushTodo () {
-    const index = this.numTodos
-
-    const todo = new Todo(this.dispatch, this.createElement('li'), index)
-
-    this.component.push(todo)
+    this.component[id] = todo
 
     return todo
   }
 
-  render (state) {
-    // Render existing todos, create new todos.
-    for (let index = 0; index < state.todos.length; index++) {
-      if (index < this.numTodos) {
-        this.component[index].render(state)
-      } else {
-        const todo = this.pushTodo()
+  deleteTodo (id) {
+    this.component[id].destroy()
 
-        todo.render(state)
-      }
-    }
+    delete this.component[id]
+  }
+
+  render (state) {
+    const { todos } = state
 
     // Remove deleted todos.
-    for (let index = state.todos.length; index < this.numTodos; index++) {
-      this.popTodo()
-    }
+
+    Object.keys(this.component).forEach(id => {
+      if (!todos[id]) {
+        this.deleteTodo(id)
+      }
+    })
+
+    // Render existing todos, create new ones.
+
+    Object.keys(todos).forEach(id => {
+      if (this.component[id]) {
+        this.component[id].render(state.todos[id])
+      } else {
+        const todo = this.createTodo(id)
+
+        todo.render(state.todos[id])
+      }
+    })
   }
 }

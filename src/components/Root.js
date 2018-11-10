@@ -1,5 +1,6 @@
 import Component from './Component'
 
+import ClearCompleted from './ClearCompleted'
 import NewTodo from './NewTodo'
 import TodoList from './TodoList'
 import ToggleAll from './ToggleAll'
@@ -7,6 +8,8 @@ import ToggleAll from './ToggleAll'
 export default class Root extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
+
+    this.component.ClearCompleted = new ClearCompleted(dispatch, document.querySelector('.clear-completed'))
 
     this.component.TodoList = new TodoList(dispatch, document.querySelector('.todo-list'))
 

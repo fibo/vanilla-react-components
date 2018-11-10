@@ -1,6 +1,6 @@
 const defaultState = {
   filter: null,
-  todos: []
+  todos: {}
 }
 
 export const loadState = () => {

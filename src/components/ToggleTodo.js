@@ -1,10 +1,10 @@
 import Component from './Component'
 
 export default class ToggleTodo extends Component {
-  constructor (dispatch, element, index) {
+  constructor (dispatch, element, todoId) {
     super(dispatch, element)
 
-    this.index = index
+    this.todoId = todoId
 
     element.addEventListener('click', this.onClick.bind(this))
     element.classList.add('toggle')
@@ -14,7 +14,15 @@ export default class ToggleTodo extends Component {
   onClick (event) {
     this.dispatch({
       type: 'TOGGLE_TODO',
-      index: this.index
+      id: this.todoId
     })
+  }
+
+  render (state) {
+    const { element } = this
+
+    if (state.completed !== element.checked) {
+      element.checked = state.completed
+    }
   }
 }

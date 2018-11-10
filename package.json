@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "browserify": "browserify ${npm_package_main} -g [ envify --NODE_ENV production ] -g uglifyify -t babelify | uglifyjs --compress --mangle > bundle.js",
-    "copy_css_files": "cp node_modules/todomvc-common/base.css .; cp node_modules/todomvc-app-css/index.css .",
+    "copy_css_files": "cp node_modules/todomvc-common/base.css css/; cp node_modules/todomvc-app-css/index.css css/",
     "lint": "standa",
     "postinstall": "npm run copy_css_files",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
