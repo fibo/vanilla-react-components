@@ -1,14 +1,14 @@
 import Component from './Component'
 
-import AddTodo from './AddTodo'
+import NewTodo from './NewTodo'
 import TodoList from './TodoList'
 
 export default class Root extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
 
-    this.component.TodoList = new TodoList(dispatch, document.querySelector('.TodoList'))
+    this.component.TodoList = new TodoList(dispatch, document.querySelector('.todo-list'))
 
-    this.component.AddTodo = new AddTodo(dispatch, document.querySelector('.AddTodo'))
+    this.component.NewTodo = new NewTodo(dispatch, document.querySelector('.new-todo'))
   }
 }

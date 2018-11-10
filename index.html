@@ -2,57 +2,45 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Tasks</title>
+    <title>VanillaJS React/Redux • TodoMVC</title>
+    <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+    <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
 
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-size: 17px;
-      }
-
-      h1 {
-        color: rgba(175, 47, 47, 0.51);
-      }
-
-      .AddTodo {
-        box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.071);
-      }
-
-      .AddTodo button {
-        outline: none;
-        cursor: pointer;
-        border: none;
-        border-radius: 50%;
-        height: 2rem;
-        width: 2rem;
-      }
-
-      .AddTodo input {
-        border: 1px solid gainsboro;
-        border-radius: 4px;
-        padding: 0.5rem;
-      }
-    </style>
-
-    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Tasks</h1>
-
-    <ul class="TodoList"></ul>
-
-    <div class="AddTodo">
-      <button>+</button>
-      <input type="text"></input>
-    </div>
+    <section class="todoapp">
+      <header class="header">
+        <h1>todos</h1>
+        <input class="new-todo" placeholder="What needs to be done?" autofocus>
+      </header>
+      <section class="main">
+        <input id="toggle-all" class="toggle-all" type="checkbox">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul class="todo-list"></ul>
+      </section>
+      <footer class="footer">
+        <span class="todo-count"></span>
+        <ul class="filters">
+          <li>
+            <a href="#/" class="selected">All</a>
+          </li>
+          <li>
+            <a href="#/active">Active</a>
+          </li>
+          <li>
+            <a href="#/completed">Completed</a>
+          </li>
+        </ul>
+        <button class="clear-completed">Clear completed</button>
+      </footer>
+    </section>
+    <footer class="info">
+      <p>Double-click to edit a todo</p>
+      <p>Created by <a href="http://twitter.com/oscargodson">Oscar Godson</a></p>
+      <p>Refactored by <a href="https://github.com/cburgmer">Christoph Burgmer</a></p>
+      <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+    </footer>
 
     <script src="bundle.js"></script>
   </body>

@@ -7,9 +7,15 @@ export default class Todo extends Component {
 
     this.index = index
 
-    this.component.deleteButton = new DeleteTodoButton(dispatch, this.createElement('button'), index)
+    const view = this.createElement('div')
 
-    this.content = this.createElement('span')
+    const toggle = this.createElement('input', view)
+    todo.classList.add('toggle')
+    todo.checked = true
+
+    this.content = this.createElement('label', view)
+
+    this.component.deleteButton = new DeleteTodoButton(dispatch, this.createElement('button', view), index)
 
     element.addEventListener('click', this.toggle.bind(this))
   }
@@ -30,6 +36,7 @@ export default class Todo extends Component {
       this.text = text
     }
 
+    /*
     if (completed !== this.completed) {
       if (completed) {
         element.classList.add('completed')
@@ -39,6 +46,7 @@ export default class Todo extends Component {
 
       this.completed = completed
     }
+    */
   }
 
   toggle () {

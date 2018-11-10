@@ -32,6 +32,7 @@ export default function app (initialState) {
 
     // Persist state in localStorage.
     store.subscribe(() => {
+      console.log(store.getState())
       saveState(store.getState())
     })
 

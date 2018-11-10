@@ -7,6 +7,7 @@ export default class DeleteTodoButton extends Component {
     this.index = index
 
     element.addEventListener('click', this.onClick.bind(this))
+    element.classList.add('destroy')
   }
 
   onClick (event) {

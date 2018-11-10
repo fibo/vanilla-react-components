@@ -5,10 +5,9 @@
   "description": "is the classic Todo example implemented with vanilla React/Redux",
   "main": "src/index.js",
   "scripts": {
-    "build": "browserify ${npm_package_main} -g [ envify --NODE_ENV production ] -g uglifyify -t babelify | uglifyjs --compress --mangle > bundle.js",
+    "browserify": "browserify ${npm_package_main} -g [ envify --NODE_ENV production ] -g uglifyify -t babelify | uglifyjs --compress --mangle > bundle.js",
     "lint": "standa",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
-    "sass": "node-sass src/style.scss --output-style compressed --output .",
     "start": "budo ${npm_package_main} --dir . --serve bundle.js --open --live -- -t babelify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -40,13 +39,14 @@
     "budo": "^11.5.0",
     "dot-editorconfig": "^1.1.1",
     "envify": "^4.1.0",
-    "node-sass": "^4.9.4",
     "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "standa": "^12.0.0",
     "uglify-js": "^3.4.9",
     "uglifyify": "^5.0.1"
   },
   "dependencies": {
-    "redux-thunk": "^2.3.0"
+    "todomvc-app-css": "^2.1.2",
+    "todomvc-common": "^1.0.5"
   }
 }
