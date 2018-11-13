@@ -46,12 +46,25 @@ export default function reducer (currenState, action) {
       state.todos[action.id].completed = !state.todos[action.id].completed
 
       break
-
-    default:
-      state.showClearCompleted = Object.keys(state.todos).find(
-        id => state.todos[id].completed === true
-      ) !== undefined
   }
+
+  state.showClearCompleted = typeof Object.keys(state.todos).find(
+    id => state.todos[id].completed
+  ) === 'string'
+
+  Object.keys(state.todos).forEach(id => {
+    switch (state.filter) {
+      case '':
+        state.todos[id].filtered = false
+      break
+      case '#/active':
+        state.todos[id].filtered = state.todos[id].completed
+      break
+      case '#/completed':
+        state.todos[id].filtered = !state.todos[id].completed
+      break
+    }
+  })
 
   return state
 }

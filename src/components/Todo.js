@@ -41,8 +41,19 @@ export default class Todo extends Component {
 
     const {
       completed,
+      filtered,
       text
     } = state
+
+    if (filtered !== this.filtered) {
+      this.filtered = filtered
+
+      if (filtered) {
+        element.style.display = 'none'
+      } else {
+        element.style.display = 'block'
+      }
+    }
 
     if (text !== this.text) {
       this.content.innerHTML = text
