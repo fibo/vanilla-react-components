@@ -1,5 +1,6 @@
 import Component from './Component'
 
+import Filters from './Filters'
 import ClearCompleted from './ClearCompleted'
 import NewTodo from './NewTodo'
 import TodoList from './TodoList'
@@ -10,6 +11,8 @@ export default class Root extends Component {
     super(dispatch, element)
 
     this.component.ClearCompleted = new ClearCompleted(dispatch, document.querySelector('.clear-completed'))
+
+    this.component.Filters = new Filters(dispatch, document.querySelector('.filters'))
 
     this.component.TodoList = new TodoList(dispatch, document.querySelector('.todo-list'))
 

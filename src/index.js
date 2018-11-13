@@ -1,7 +1,5 @@
 import app from './app'
 
-import { loadState } from './localStorage'
+import { initialState } from './store'
 
-const state = loadState()
-
-window.addEventListener('load', app(loadState()))
+window.addEventListener('load', app(initialState()))

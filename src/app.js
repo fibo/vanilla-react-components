@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 
-import { saveState } from './localStorage'
+import { saveState } from './store/localStorage'
 import Root from './components/Root'
 import reducer from './reducer'
 

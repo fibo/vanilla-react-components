@@ -12,6 +12,11 @@ export default function reducer (currenState, action) {
 
       break
 
+    case 'APPLY_FILTER':
+      state.filter = action.filter
+
+      break
+
     case 'CLEAR_COMPLETED':
       for (let id in state.todos) {
         if (state.todos[id]. completed) {
