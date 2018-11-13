@@ -4,55 +4,61 @@ export default class Filters extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
 
-    const all = element.children[0]
-    const active = element.children[1]
-    const completed = element.children[2]
+    const all = this.all = element.children[0]
+    const active = this.active = element.children[1]
+    const completed = this.completed = element.children[2]
 
-    this.all = all
-    this.active = active
-    this.completed = completed
+    all.addEventListener('click', this.onclickAll.bind(this))
+    active.addEventListener('click', this.onclickActive.bind(this))
+    completed.addEventListener('click', this.onclickCompleted.bind(this))
+  }
 
-    all.addEventListener('click', function () {
-      dispatch({
-        type: 'APPLY_FILTER',
-        filter: ''
-      })
+  onclickAll () {
+    this.dispatch({
+      type: 'APPLY_FILTER',
+      filter: ''
     })
+  }
 
-    active.addEventListener('click', function () {
-      dispatch({
-        type: 'APPLY_FILTER',
-        filter: '#/active'
-      })
+  onclickActive () {
+    this.dispatch({
+      type: 'APPLY_FILTER',
+      filter: '#/active'
     })
+  }
 
-    completed.addEventListener('click', function () {
-      dispatch({
-        type: 'APPLY_FILTER',
-        filter: '#/completed'
-      })
+  onclickCompleted () {
+    this.dispatch({
+      type: 'APPLY_FILTER',
+      filter: '#/completed'
     })
   }
 
   render (state) {
+    const {
+      all,
+      active,
+      completed
+    } = this
+
     if (state.filter !== this.filter) {
       this.filter = state.filter
 
       switch (this.filter) {
         case '':
-          this.all.children[0].classList.add('selected')
-          this.active.children[0].classList.remove('selected')
-          this.completed.children[0].classList.remove('selected')
+          all.children[0].classList.add('selected')
+          active.children[0].classList.remove('selected')
+          completed.children[0].classList.remove('selected')
         break
         case '#/active':
-          this.all.children[0].classList.remove('selected')
-          this.active.children[0].classList.add('selected')
-          this.completed.children[0].classList.remove('selected')
+          all.children[0].classList.remove('selected')
+          active.children[0].classList.add('selected')
+          completed.children[0].classList.remove('selected')
         break
         case '#/completed':
-          this.all.children[0].classList.remove('selected')
-          this.active.children[0].classList.remove('selected')
-          this.completed.children[0].classList.add('selected')
+          all.children[0].classList.remove('selected')
+          active.children[0].classList.remove('selected')
+          completed.children[0].classList.add('selected')
         break
       }
     }

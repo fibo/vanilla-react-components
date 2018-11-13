@@ -15,6 +15,8 @@ export default class Todo extends Component {
 
     view.classList.add('view')
 
+    view.addEventListener('dblclick', this.ondblclick.bind(this))
+
     this.component.toggle = new ToggleTodo(dispatch, this.createElement('input', view), id)
 
     this.content = this.createElement('label', view)
@@ -23,17 +25,35 @@ export default class Todo extends Component {
   }
 
   createEdit () {
-    const edit = new Edit(dispatch, this.createElement('input'), this.view)
+    const {
+      dispatch,
+      id,
+      view
+    } = this
 
-    this.component.edit = edit
+    const edit = this.component.edit = new Edit(dispatch, this.createElement('input'), id)
 
     return edit
   }
 
   destroyEdit () {
-    this.component.edit.destroy()
+    if (this.component.edit) {
+      this.component.edit.destroy()
 
-    delete this.component.edit
+      delete this.component.edit
+    }
+  }
+
+  ondblclick () {
+    const {
+      dispatch,
+      id
+    } = this
+
+    dispatch({
+      type: 'EDIT_TODO',
+      id
+    })
   }
 
   render (state) {
@@ -70,18 +90,20 @@ export default class Todo extends Component {
       this.completed = completed
     }
 
-    if (state.edit !== this.edit) {
-      if (state.edit) {
-        this.edit = true
-      } else {
-        this.edit = false
-      }
+    if (state.editing !== this.editing) {
+      this.editing = state.editing
 
-      if (this.edit) {
+      if (this.editing) {
+        this.element.classList.add('editing')
+
         const edit = this.createEdit()
 
-        edit.render(state)
+        edit.element.value = text
+
+        edit.element.focus()
       } else {
+        this.element.classList.remove('editing')
+
         this.destroyEdit()
       }
     }

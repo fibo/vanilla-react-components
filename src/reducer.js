@@ -26,8 +26,8 @@ export default function reducer (currenState, action) {
 
       break
 
-    case 'EDIT':
-      state.todos[action.id].edit = true
+    case 'EDIT_TODO':
+      state.editingId = action.id
 
       break
     case 'DELETE_TODO':
@@ -46,25 +46,18 @@ export default function reducer (currenState, action) {
       state.todos[action.id].completed = !state.todos[action.id].completed
 
       break
+
+    case 'UPDATE_TODO':
+      state.todos[action.id].text = action.text
+
+      state.editingId = null
+
+      break
   }
 
-  state.showClearCompleted = typeof Object.keys(state.todos).find(
-    id => state.todos[id].completed
-  ) === 'string'
-
-  Object.keys(state.todos).forEach(id => {
-    switch (state.filter) {
-      case '':
-        state.todos[id].filtered = false
-      break
-      case '#/active':
-        state.todos[id].filtered = state.todos[id].completed
-      break
-      case '#/completed':
-        state.todos[id].filtered = !state.todos[id].completed
-      break
-    }
-  })
+    Object.keys(state.todos).forEach(id => {
+      delete state.todos[id].editing
+    })
 
   return state
 }

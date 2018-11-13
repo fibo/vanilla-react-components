@@ -6,7 +6,7 @@ export default class Edit extends Component {
 
     this.todoId = todoId
 
-    element.classList.add('toggle')
+    element.classList.add('edit')
 
     element.addEventListener('keydown', this.onkeydown.bind(this))
   }
@@ -17,20 +17,18 @@ export default class Edit extends Component {
     }
   }
 
-  render (state) {
-    console.log(state)
-  }
-
   updateTodo () {
     const {
       dispatch,
-      element
+      element,
+      todoId
     } = this
 
     if (element.value) {
       dispatch({
         type: 'UPDATE_TODO',
-        text: element.value
+        text: element.value,
+        id: todoId
       })
 
       element.value = ''
@@ -39,4 +37,3 @@ export default class Edit extends Component {
     }
   }
 }
-
